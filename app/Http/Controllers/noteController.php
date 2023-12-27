@@ -15,6 +15,25 @@ class noteController extends Controller
     public function show(Request $request){
         $id = $request->id;
         $note = Note::findOrfail($id);
-        return View('show-note', compact('note'));
+        return View('note/show-note', compact('note'));
+    }
+    public function create(){
+        return View('note/create-note');
+    }
+    public function store(Request $request){
+        $title = $request->title;
+        $desc = $request->desc;
+        
+        //validation
+        $request->validate([
+            'title' => 'required'
+        ]);
+
+        //insertion
+        Note::create([
+            'title' => $title,
+            'desc' => $desc,
+        ]);
+        return redirect()->route('homePage');
     }
 }
