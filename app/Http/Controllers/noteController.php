@@ -34,6 +34,6 @@ class noteController extends Controller
             'title' => $title,
             'desc' => $desc,
         ]);
-        return redirect()->route('homePage');
+        return redirect()->route('homePage')->with('success','Your note has been added !');
     }
 }

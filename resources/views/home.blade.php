@@ -7,6 +7,8 @@
 @section('section12')
     <h2>My Notes</h2>
 
+    @include('partials.flashBag')
+
     <div class="row d-flex justify-content-center">
 
         @foreach ($notes as $note)
