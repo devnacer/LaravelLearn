@@ -12,9 +12,7 @@ class noteController extends Controller
         $notes = Note::paginate(6);
         return View('home', compact('notes'));
     }
-    public function show(Request $request){
-        $id = $request->id;
-        $note = Note::findOrfail($id);
+    public function show(Note $note){
         return View('note/show-note', compact('note'));
     }
     public function create(){
