@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use App\Http\Requests\noteRequest;
 use Illuminate\Support\Facades\View;
 
 class noteController extends Controller
@@ -18,21 +19,14 @@ class noteController extends Controller
     public function create(){
         return View('note/create-note');
     }
-    public function store(Request $request){
-        $title = $request->title;
-        $desc = $request->desc;
+    public function store(noteRequest $request){
+        // $title = $request->title;
+        // $desc = $request->desc;
         
         //validation
-        $request->validate([
-            'title' => 'required|min:2|max:55',
-            'desc' => 'max:255'
-        ]);
-
+        $formFields = $request->validated();
         //insertion
-        Note::create([
-            'title' => $title,
-            'desc' => $desc,
-        ]);
+        Note::create($formFields);
         return redirect()->route('homePage')->with('success','Your note has been added !');
     }
 }

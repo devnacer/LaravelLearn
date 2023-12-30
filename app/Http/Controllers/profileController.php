@@ -6,6 +6,7 @@ use App\Models\Profile;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\profileRequest;
 use function Laravel\Prompts\password;
 
 class profileController extends Controller
@@ -15,27 +16,21 @@ class profileController extends Controller
         return view('profile.create-profile');
     }
 
-    public function store(Request $request)
+    public function store(profileRequest $request)
     {
         //
-        $name = $request->name;
-        $email = $request->email;
-        $password = $request->password;
+        // $name = $request->name;
+        // $email = $request->email;
+        // $password = $request->password;
 
         //validation
-        $request->validate([
-            'name' => 'required|min:2',
-            'email' => 'required|unique:profiles',
-            'password' => 'required|min:2|confirmed'
-        ]);
+        $formFields = $request->validated();
+
+        // hash
+        $formFields['password'] = Hash::make($formFields['password']);
 
         //insertion
-
-        Profile::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => Hash::make($password),
-        ]);
+        Profile::create($formFields);
         // change the name of route
         return redirect()->route('homePage');
     }

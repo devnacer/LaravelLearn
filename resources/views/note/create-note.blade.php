@@ -22,7 +22,7 @@
         @csrf
         <div class="col-12">
             <label for="inputName" class="form-label">Title</label>
-            <input type="text" name="title" class="form-control" id="inputTitle">
+            <input type="text" value="{{old('title')}}" name="title" class="form-control" id="inputTitle">
             @error('title')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
@@ -30,7 +30,7 @@
 
         <div class="col-12">
             <label for="inputDesc" class="form-label">Desc</label>
-            <textarea type="text" name="desc" class="form-control" id="inputDesc" placeholder="description..."></textarea>
+            <textarea type="text" name="desc" class="form-control" id="inputDesc" placeholder="description...">{{old('title')}}</textarea>
             @error('desc')
                 <small class="text-danger">{{ $message }}</small>
             @enderror

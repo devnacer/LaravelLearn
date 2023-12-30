@@ -22,15 +22,15 @@
 
         <div class="col-12">
             <label for="inputName" class="form-label">Name</label>
-            <input type="text" name="name" class="form-control" id="inputName">
+            <input type="text" name="name" value="{{old('name')}}" class="form-control" id="inputName">
             @error('name')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
         </div>
 
-        <div class="col-md-6">
+        <div class="col-12">
             <label for="inputEmail4" class="form-label">Email</label>
-            <input type="email" name="email" class="form-control" id="inputEmail4">
+            <input type="email" name="email" value="{{old('email')}}" class="form-control" id="inputEmail4">
             @error('email')
                 <small class="text-danger">{{ $message }}</small>
             @enderror
