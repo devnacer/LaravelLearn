@@ -26,7 +26,8 @@ class noteController extends Controller
         
         //validation
         $request->validate([
-            'title' => 'required'
+            'title' => 'required|min:2|max:55',
+            'desc' => 'max:255'
         ]);
 
         //insertion
