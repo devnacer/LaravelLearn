@@ -17,3 +17,4 @@ Route::post('/profile/store', [profileController::class, 'store'])->name('profil
 //login
 Route::get('/login', [loginController::class, 'show'])->name('login.show');
 Route::post('/login', [loginController::class, 'login'])->name('login');
+Route::get('/logout', [loginController::class, 'logout'])->name('logout');
