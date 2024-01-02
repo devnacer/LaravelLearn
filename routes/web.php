@@ -18,3 +18,5 @@ Route::post('/profile/store', [profileController::class, 'store'])->name('profil
 Route::get('/login', [loginController::class, 'show'])->name('login.show');
 Route::post('/login', [loginController::class, 'login'])->name('login');
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+//delete note
+Route::delete('/note/{note}',[noteController::class, 'destroy'])->name('note.destroy');

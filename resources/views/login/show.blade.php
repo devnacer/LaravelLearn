@@ -21,7 +21,7 @@
 @extends('layouts.master')
 
 @section('section12')
-    <form method="POST" action="{{route('login')}}" class="form-signin">
+    <form method="POST" action="{{ route('login') }}" class="form-signin">
         @csrf
         <h1 class="h3 my-3 fw-normal">Sign in</h1>
 

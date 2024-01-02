@@ -29,4 +29,8 @@ class noteController extends Controller
         Note::create($formFields);
         return redirect()->route('homePage')->with('success','Your note has been added !');
     }
+    public function destroy(Note $note){
+        $note->delete();
+        return to_route('homePage')->with('success','Your note '.$note->title.' has been deleted !');
+    }
 }
