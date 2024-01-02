@@ -8,6 +8,9 @@
         <ul class="navbar-nav">
 
           <li class="nav-item">
+            <a class="nav-link" href="{{ route('login.show') }}">Login</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="{{ route('homePage') }}">Home</a>
           </li>
           <li class="nav-item">
