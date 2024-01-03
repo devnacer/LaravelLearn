@@ -33,4 +33,14 @@ class noteController extends Controller
         $note->delete();
         return to_route('homePage')->with('success','Your note '.$note->title.' has been deleted !');
     }
+    public function edit(Note $note){ 
+        return View('note.edit-note', compact('note'));
+    }
+    public function update(noteRequest $request, Note $note){ 
+                //validation
+                $formFields = $request->validated();
+                $note->fill($formFields)->save();
+                return to_route('homePage')->with('success','Your note was updated !');
+
+    }
 }

@@ -20,3 +20,6 @@ Route::post('/login', [loginController::class, 'login'])->name('login');
 Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 //delete note
 Route::delete('/note/{note}',[noteController::class, 'destroy'])->name('note.destroy');
+//update note
+Route::get('/note/{note}/edit',[noteController::class, 'edit'])->name('note.edit');
+Route::put('/note/{note}',[noteController::class, 'update'])->name('note.update');

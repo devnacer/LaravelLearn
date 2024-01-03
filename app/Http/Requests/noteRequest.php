@@ -23,7 +23,7 @@ class noteRequest extends FormRequest
     {
         return [
             'title' => 'required|min:2|max:55',
-            'desc' => 'max:255'
+            'desc' => 'required|max:255'
         ];
     }
 }

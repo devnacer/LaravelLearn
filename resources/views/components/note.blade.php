@@ -11,5 +11,9 @@
             @method('delete')
             <button class="btn-sm btn-danger float-end">Delete</button>
         </form>
+        <form action="{{ route('note.edit', $note->id) }}" method="get">
+            @csrf
+            <button class="btn-sm btn-primary float-end mx-2">Edit</button>
+        </form>
     </div>
 </div>
