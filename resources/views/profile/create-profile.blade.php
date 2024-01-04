@@ -17,7 +17,7 @@
         </x-alert>
     @endif
 
-    <form class="row g-3" method="POST" action="{{ route('profile.store') }}">
+    <form class="row g-3" method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="col-12">
@@ -47,6 +47,11 @@
         <div class="col-md-6">
             <label for="inputPassword4" class="form-label">Confirmation Password</label>
             <input type="password" name="password_confirmation" class="form-control" >
+        </div>
+
+        <div class="col-md-12">
+            <label for="inputImage" class="form-label">Image profile</label>
+            <input type="file" name="image" class="form-control" >
         </div>
 
         <div class="col-12">

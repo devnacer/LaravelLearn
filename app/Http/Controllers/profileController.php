@@ -26,6 +26,9 @@ class profileController extends Controller
         //validation
         $formFields = $request->validated();
 
+        $formFields['image'] = $request->file('image')->store('profile','public'); // 'profile' == pour créer un dossier profile dans storage/app/public où stocker ses images ; 'public' == pour rendre l'image accessible à tous les utlisateurs dans le site, regade  le fichier config/filesystemps comprendre
+        
+
         // hash
         $formFields['password'] = Hash::make($formFields['password']);
 
