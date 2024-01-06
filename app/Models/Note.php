@@ -11,6 +11,10 @@ class Note extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $dates = [
+        'created_at',
+    ];
+
     protected $fillable = [
         'title',
         'desc',
