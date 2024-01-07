@@ -25,7 +25,7 @@ class loginController extends Controller
         if (Auth::attempt($credentials)) {
 
             $request->session()->regenerate();
-            return redirect()->route('homePage')->with([
+            return redirect()->route('note.homePage')->with([
                 'success' => 'Hello ' . $login,
             ]);
         } else {

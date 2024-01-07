@@ -17,7 +17,7 @@
 
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('homePage') }}">Home</a>
+                        <a class="nav-link" href="{{ route('note.homePage') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('note.create') }}">Create note</a>

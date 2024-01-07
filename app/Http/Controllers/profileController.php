@@ -35,6 +35,6 @@ class profileController extends Controller
         //insertion
         Profile::create($formFields);
         // change the name of route
-        return redirect()->route('homePage');
+        return redirect()->route('note.homePage');
     }
 }

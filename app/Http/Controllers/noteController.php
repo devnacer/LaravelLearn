@@ -27,11 +27,11 @@ class noteController extends Controller
         $formFields = $request->validated();
         //insertion
         Note::create($formFields);
-        return redirect()->route('homePage')->with('success','Your note has been added !');
+        return redirect()->route('note.homePage')->with('success','Your note has been added !');
     }
     public function destroy(Note $note){
         $note->delete();
-        return to_route('homePage')->with('success','Your note '.$note->title.' has been deleted !');
+        return to_route('note.homePage')->with('success','Your note '.$note->title.' has been deleted !');
     }
     public function edit(Note $note){ 
         return View('note.edit-note', compact('note'));
@@ -40,7 +40,7 @@ class noteController extends Controller
                 //validation
                 $formFields = $request->validated();
                 $note->fill($formFields)->save();
-                return to_route('homePage')->with('success','Your note was updated !');
+                return to_route('note.homePage')->with('success','Your note was updated !');
 
     }
 }
