@@ -12,12 +12,12 @@
             <p class="card-text">{{ $note->desc }}</p>
         </div>
         <div class="card-footer bg-transparent border-top">
-            <form action="{{ route('note.destroy', $note->id) }}" method="POST">
+            <form action="{{ route('notes.destroy', $note->id) }}" method="POST">
                 @csrf
                 @method('delete')
                 <button class="btn-sm btn-danger float-end">Delete</button>
             </form>
-            <form action="{{ route('note.edit', $note->id) }}" method="get">
+            <form action="{{ route('notes.edit', $note->id) }}" method="get">
                 @csrf
                 <button class="btn-sm btn-primary float-end mx-2">Edit</button>
             </form>

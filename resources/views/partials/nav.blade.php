@@ -10,17 +10,17 @@
                         <a class="nav-link" href="{{ route('login.show') }}">Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('profile.create') }}">Register</a>
+                        <a class="nav-link" href="{{ route('profiles.create') }}">Register</a>
                     </li>
 
                 @endguest
 
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('note.homePage') }}">Home</a>
+                        <a class="nav-link" href="{{ route('notes.index') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('note.create') }}">Create note</a>
+                        <a class="nav-link" href="{{ route('notes.create') }}">Create note</a>
                     </li>
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"

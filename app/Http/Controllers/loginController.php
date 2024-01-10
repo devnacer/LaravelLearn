@@ -12,6 +12,7 @@ class loginController extends Controller
     {
         return view('login.show');
     }
+
     public function login(Request $request)
     {
 
@@ -25,7 +26,7 @@ class loginController extends Controller
         if (Auth::attempt($credentials)) {
 
             $request->session()->regenerate();
-            return redirect()->route('note.homePage')->with([
+            return redirect()->route('notes.index')->with([
                 'success' => 'Hello ' . $login,
             ]);
         } else {
@@ -38,6 +39,6 @@ class loginController extends Controller
     public function logout(){
         Session::flush();
         Auth::logout();
-        return to_route('login');
+        return to_route('login.show');
     }
 }

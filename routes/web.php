@@ -11,13 +11,13 @@ use App\Http\Controllers\profileController;
 // Route::get('/note/create', [noteController::class, 'create'])->name('note.create');
 // Route::get('/note/{note:id}', [noteController::class, 'show'])->where('note','\d+')->name('note.show');
 // Route::post('/note/store', [noteController::class, 'store'])->name('note.store');
-// profile
-Route::get('/profile/create', [profileController::class, 'create'])->name('profile.create');
-Route::post('/profile/store', [profileController::class, 'store'])->name('profile.store');
+// // profile
+// Route::get('/profile/create', [profileController::class, 'create'])->name('profile.create' );
+// Route::post('/profile/store', [profileController::class, 'store'])->name('profile.store');
 //login
-Route::get('/login', [loginController::class, 'show'])->name('login.show');
-Route::post('/login', [loginController::class, 'login'])->name('login');
-Route::get('/logout', [loginController::class, 'logout'])->name('logout');
+Route::get('/login', [loginController::class, 'show'])->name('login.show')->middleware('guest');
+Route::post('/login', [loginController::class, 'login'])->name('login')->middleware('guest');
+Route::get('/logout', [loginController::class, 'logout'])->name('logout')->middleware('auth');
 //delete note
 // Route::delete('/note/{note}',[noteController::class, 'destroy'])->name('note.destroy');
 //update note
@@ -43,22 +43,26 @@ Route::get('/logout', [loginController::class, 'logout'])->name('logout');
 // });
 
 //__________________________note
-Route::name('note.')->prefix('note/')->group(function(){
+// Route::name('note.')->prefix('note/')->group(function(){
 
-    Route::controller(noteController::class)->group(function(){
+//     Route::controller(noteController::class)->group(function(){
         
-        //update note
-        Route::get('{note}/edit', 'edit')->name('edit');
-        Route::put('{note}', 'update')->name('update');
-        //delete note
-        Route::delete('{note}', 'destroy')->name('destroy');
-        // create
-        Route::get('create', 'create')->name('create');
-        Route::post('store', 'store')->name('store');
-        //show note
-        Route::get('{note:id}', 'show')->where('note','\d+')->name('show');
-        // show all notes
-        Route::get('', 'index')->name('homePage');
+//         //update note
+//         Route::get('{note}/edit', 'edit')->name('edit');
+//         Route::put('{note}', 'update')->name('update');
+//         //delete note
+//         Route::delete('{note}', 'destroy')->name('destroy');
+//         // create
+//         Route::get('create', 'create')->name('create');
+//         Route::post('store', 'store')->name('store');
+//         //show note
+//         Route::get('{note:id}', 'show')->where('note','\d+')->name('show');
+//         // show all notes
+//         Route::get('', 'index')->name('homePage');
 
-    });
-});
+//     });
+// });
+
+Route::resource('notes',noteController::class);
+Route::resource('profiles',profileController::class);
+

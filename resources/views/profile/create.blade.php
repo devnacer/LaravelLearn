@@ -17,7 +17,7 @@
         </x-alert>
     @endif
 
-    <form class="row g-3" method="POST" action="{{ route('profile.store') }}" enctype="multipart/form-data">
+    <form class="row g-3" method="POST" action="{{ route('profiles.store') }}" enctype="multipart/form-data">
         @csrf
 
         <div class="col-12">

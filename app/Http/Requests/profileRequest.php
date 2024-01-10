@@ -25,7 +25,7 @@ class profileRequest extends FormRequest
             'name' => 'required|min:2',
             'email' => 'required|unique:profiles',
             'password' => 'required|min:2|confirmed',
-            'image' => 'required|image|mimes:png,jpeg,jpg,svg', //la valeur est en kilobytes 12000 = 12 mega
+            'image' => 'image|mimes:png,jpeg,jpg,svg', //la valeur est en kilobytes 12000 = 12 mega
         ];
     }
 }

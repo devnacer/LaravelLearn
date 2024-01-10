@@ -8,17 +8,25 @@ use App\Http\Requests\noteRequest;
 use Illuminate\Support\Facades\View;
 
 class noteController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $notes = Note::paginate(6);
-        return View('home', compact('notes'));
+        return View('note.index', compact('notes'));
     }
+
     public function show(Note $note){
-        return View('note/show-note', compact('note'));
+        return View('note.show', compact('note'));
     }
+
     public function create(){
-        return View('note/create-note');
+        return View('note.create');
     }
+
     public function store(noteRequest $request){
         // $title = $request->title;
         // $desc = $request->desc;
@@ -27,20 +35,23 @@ class noteController extends Controller
         $formFields = $request->validated();
         //insertion
         Note::create($formFields);
-        return redirect()->route('note.homePage')->with('success','Your note has been added !');
+        return redirect()->route('notes.index')->with('success','Your note has been added !');
     }
+
     public function destroy(Note $note){
         $note->delete();
-        return to_route('note.homePage')->with('success','Your note '.$note->title.' has been deleted !');
+        return to_route('notes.index')->with('success','Your note '.$note->title.' has been deleted !');
     }
+
     public function edit(Note $note){ 
-        return View('note.edit-note', compact('note'));
+        return View('note.edit', compact('note'));
     }
+
     public function update(noteRequest $request, Note $note){ 
                 //validation
                 $formFields = $request->validated();
                 $note->fill($formFields)->save();
-                return to_route('note.homePage')->with('success','Your note was updated !');
+                return to_route('notes.index')->with('success','Your note was updated !');
 
     }
 }

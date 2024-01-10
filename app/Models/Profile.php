@@ -17,4 +17,9 @@ class Profile extends Model
         'password',
         'image',
     ];
+
+    protected $hidden = [
+        'remember_token',
+    ];
+
 }
