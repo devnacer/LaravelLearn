@@ -17,9 +17,9 @@ class profileController extends Controller
         return View('profile.index', compact('profiles'));
     }
 
-    public function show()
+    public function show(Profile $profile)
     {
-        // return View('note.show', compact('note'));
+        return View('profile.show', compact('profile'));
     }
 
 
@@ -55,25 +55,30 @@ class profileController extends Controller
 
 
 
-    public function destroy()
+    public function destroy(Profile $profile)
     {
-        // $note->delete();
-        // return to_route('notes.index')->with('success','Your note '.$note->title.' has been deleted !');
+        $profile->delete();
+        return to_route('profiles.index')->with('success', 'The profile ' . $profile->name . ' has been deleted !');
     }
 
-    public function edit()
+    public function edit(Profile $profile)
     {
-        // return View('note.edit', compact('note'));
+        return View('profile.edit', compact('profile'));
     }
 
-    public function update()
+    public function update(profileRequest $request, Profile $profile)
     {
         //validation
-        // $formFields = $request->validated();
-        // $note->fill($formFields)->save();
-        // return to_route('notes.index')->with('success','Your note was updated !');
+        $formFields = $request->validated();
+        //image
+        if ($request->hasFile('image')) {
+
+            $formFields['image'] = $request->file('image')->store('profile', 'public'); // 'profile' == pour créer un dossier profile dans storage/app/public où stocker ses images ; 'public' == pour rendre l'image accessible à tous les utlisateurs dans le site, regade  le fichier config/filesystemps comprendre
+        }
+        // hash
+        $formFields['password'] = Hash::make($formFields['password']);
+        $profile->fill($formFields)->save();
+        return to_route('profiles.index')->with('success','The profile was updated !');
 
     }
-
-
 }
