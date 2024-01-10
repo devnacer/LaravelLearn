@@ -13,8 +13,8 @@ class profileController extends Controller
 {
     public function index()
     {
-        // $notes = Note::paginate(6);
-        // return View('note.index', compact('notes'));
+        $profiles = Profile::paginate(6);
+        return View('profile.index', compact('profiles'));
     }
 
     public function show()
@@ -74,4 +74,6 @@ class profileController extends Controller
         // return to_route('notes.index')->with('success','Your note was updated !');
 
     }
+
+
 }

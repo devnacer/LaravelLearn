@@ -12,7 +12,7 @@ class NoteSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Note::factory(45)->create();
+        \App\Models\Note::factory(12)->create();
 
     }
 }

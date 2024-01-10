@@ -22,4 +22,8 @@ class Profile extends Model
         'remember_token',
     ];
 
+    public function getImageAttribute($value){
+        return $value??'profile/personNoImage.png';
+    }
+
 }

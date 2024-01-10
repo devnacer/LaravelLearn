@@ -5,6 +5,9 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav flex-grow-1">
 
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('profiles.index') }}">All profiles</a>
+                </li>
                 @guest
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login.show') }}">Login</a>
