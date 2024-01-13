@@ -12,11 +12,12 @@
     <div class="row d-flex justify-content-center">
 
         @foreach ($notes as $note)
-            <x-note :note='$note' />
+            @if (Auth()->user()->id = $note->profile_id)
+                <x-note :note='$note' />
+            @endif
         @endforeach
 
     </div>
 
-    {{$notes->links()}}
-
+    {{ $notes->links() }}
 @endsection

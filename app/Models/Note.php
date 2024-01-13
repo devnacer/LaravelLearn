@@ -18,6 +18,7 @@ class Note extends Model
     protected $fillable = [
         'title',
         'desc',
+        'profile_id',
     ];
 
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use Illuminate\Http\Request;
 use App\Http\Requests\noteRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 
 class noteController extends Controller
@@ -15,7 +16,7 @@ class noteController extends Controller
     }
 
     public function index(){
-        $notes = Note::paginate(6);
+        $notes = Note::latest()->paginate(6);
         return View('note.index', compact('notes'));
     }
 
@@ -33,6 +34,7 @@ class noteController extends Controller
         
         //validation
         $formFields = $request->validated();
+        $formFields['profile_id'] = Auth::id(); //associe chaque note à son profile
         //insertion
         Note::create($formFields);
         return redirect()->route('notes.index')->with('success','Your note has been added !');
