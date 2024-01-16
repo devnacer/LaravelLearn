@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Note;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Profile extends Model
 {
@@ -25,5 +26,10 @@ class Profile extends Model
     public function getImageAttribute($value){
         return $value??'profile/personNoImage.png';
     }
+
+    public function notes(){
+        return $this->hasMany(Note::class);
+    }
+
 
 }

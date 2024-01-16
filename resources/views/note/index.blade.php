@@ -10,7 +10,6 @@
     @include('partials.flashBag')
 
     <div class="row d-flex justify-content-center">
-
         @foreach ($notes as $note)
             @if (Auth()->user()->id = $note->profile_id)
                 <x-note :note='$note' />

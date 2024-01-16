@@ -21,4 +21,8 @@ class Note extends Model
         'profile_id',
     ];
 
+    public function profiles(){
+        return $this->belongsTo(Profile::class);
+    }
+
 }
